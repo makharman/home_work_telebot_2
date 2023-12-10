@@ -22,14 +22,14 @@ def inline(message):
 
     bot.send_message(message.chat.id, "Select", reply_markup=markup)
     
-@bot.callback_query_handler(func=lambda call: isinstance(call.data, str) and call.data == "balance")
+@bot.callback_query_handler(func=lambda call: call.data == 'balance')
 def callback_handler(call):
   balance_keyboard = types.InlineKeyboardMarkup()
 
-  button_1 = types.InlineKeyboardButton(text="Вывод",callback_data="withdraw")
+  button_1 = types.InlineKeyboardButton(text="Вывод", callback_data="withdraw")
   balance_keyboard.add(button_1)
 
-  button_2 = types.InlineKeyboardButton(text="Пополнить",callback_data="deposit")
+  button_2 = types.InlineKeyboardButton(text="Пополнить", callback_data="deposit")
   balance_keyboard.add(button_2)
 
   bot.send_message(call.message.chat.id, "Select", reply_markup=balance_keyboard)
