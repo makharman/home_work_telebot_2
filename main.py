@@ -12,14 +12,11 @@ def start_message(message):
 
 @bot.message_handler(commands=['start'])
 def inline(message):
-    # Создаем inline клавиатуру
     markup = types.InlineKeyboardMarkup()
-
-    # Кнопка 'github' с внешней ссылкой
+    
     github_button = types.InlineKeyboardButton(text='github', url='https://github.com')
     markup.add(github_button)
-
-    # Кнопка 'balance' с подключенной клавиатурой
+    
     balance_button = types.InlineKeyboardButton(text='balance', callback_data='balance')
     markup.add(balance_button)
 
